@@ -1,14 +1,24 @@
-const http = require('http');
+//const http = require('http');
 const express = require('express');
 const path = require('path'); //css
 const bodyParser = require('body-parser');
 const app = express();
+
+var port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'static'))); //css
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/', require('./routes/index'));
+
+app.listen(port);
+
+
+//const server = http.createServer(app);
+//server.listen(5000);
+
+
 
 
 
@@ -52,19 +62,3 @@ transporter.sendMail(email, (err, result)=>{
   console.log("Mensagem enviada!!!! " + result)
 
 });*/
-
-
-
-
-
-
-
-
-
-
-
-const server = http.createServer(app);
-server.listen(5000);
-
-
-
